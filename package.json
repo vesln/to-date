@@ -1,0 +1,25 @@
+{
+  "name": "to-date",
+  "version": "0.0.0",
+  "description": "Simple time ago/from now date generator",
+  "author": "Veselin Todorov <hi@vesln.com>",
+  "license": "MIT",
+  "main": "./index.js",
+  "homepage": "https://github.com/vesln/to-date",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vesln/to-date"
+  },
+  "devDependencies": {
+    "hydro": "*",
+    "hydro-simple": "*",
+    "hydro-bdd": "~0.2.0",
+    "timekeeper": "0.0.4"
+  },
+  "dependencies": {
+    "ago": "~1.0.0"
+  }
+}
