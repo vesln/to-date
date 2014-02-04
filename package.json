@@ -1,6 +1,6 @@
 {
   "name": "to-date",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple time ago/from now date generator",
   "author": "Veselin Todorov <hi@vesln.com>",
   "license": "MIT",
