@@ -65,48 +65,77 @@ ToDate.parse = function(input) {
 };
 
 /**
- * Set the method to "from now" and return the desired date.
- *
- * @returns {Date}
- * @api public
+ * Prototype.
  */
 
-ToDate.prototype.fromNow = function() {
-  this.method = 'from now';
-  return this.build();
-};
+ToDate.prototype = {
 
-/**
- * Set the method to "ago" and return the desired date.
- *
- * @returns {Date}
- * @api public
- */
+  /**
+   * Set the method to "from now" and return the desired date.
+   *
+   * @returns {Date}
+   * @api public
+   */
 
-ToDate.prototype.ago = function() {
-  this.method = 'ago';
-  return this.build();
-};
+  get fromNow() {
+    this.method = 'from now';
+    return this.build();
+  },
 
-/**
- * Build the desired date and return it.
- *
- * @returns {Date}
- * @api public
- */
+  /**
+   * Set the method to "ago" and return the desired date.
+   *
+   * @returns {Date}
+   * @api public
+   */
 
-ToDate.prototype.build = function() {
-  var time = null;
+  get ago() {
+    this.method = 'ago';
+    return this.build();
+  },
 
-  if (this.method === 'from now') {
-    time = ago.fromNow(this.amount, this.unit);
-  } else if (this.method === 'ago') {
-    time = ago(this.amount, this.unit);
-  } else {
-    throw new Error('Invalid method: ' + this.method);
-  }
+  /**
+   * #fromNow alias.
+   *
+   * @returns {Date}
+   * @api public
+   */
 
-  return new Date(time);
+  get now() {
+    return this.fromNow();
+  },
+
+  /**
+   * Chain.
+   *
+   * @returns {ToDate}
+   * @api public
+   */
+
+  get from() {
+    return this;
+  },
+
+  /**
+   * Build the desired date and return it.
+   *
+   * @returns {Date}
+   * @api public
+   */
+
+  build: function() {
+    var time = null;
+
+    if (this.method === 'from now') {
+      time = ago.fromNow(this.amount, this.unit);
+    } else if (this.method === 'ago') {
+      time = ago(this.amount, this.unit);
+    } else {
+      throw new Error('Invalid method: ' + this.method);
+    }
+
+    return new Date(time);
+  },
 };
 
 /**
